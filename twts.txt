@@ -1,0 +1,18 @@
+UofTCompSci:
+20181108132750,Unknown Location,Twitter for Android,0,5
+RT @_AlecJacobson: We are hiring
+Website:
+https://t.co/O9Oui82dEA
+<<<EOT
+20181106202405,Toronto Ontario,Twitter for Android,6,1
+Congratulations to all our fall graduates!  https://t.co/iRXYwYUAKa
+<<<EOT
+UofT:
+20181108132753,Unknown Location,Twitter for Android,0,5
+RT @_AlecJacobson: We are hiring
+not
+https://t.co/O9Oui82dEA
+<<<EOT
+20181108132753,Unknown Location,Twitter for Android,0,5
+A
+<<<EOT

@@ -1,3 +1,5 @@
+"""Main Program."""
+
 from typing import List, Dict, TextIO, Tuple
 
 HASH_SYMBOL = '#'
@@ -37,7 +39,6 @@ def alnum_prefix(text: str) -> str:
     'iamiamiam'
     >>> alnum_prefix('$$$money')
     ''
-
     """
 
     index = 0
@@ -55,7 +56,6 @@ def clean_word(word: str) -> str:
     'alreadyclean'
     >>> clean_word('very123mes$_sy?')
     'very123messy'
-
     """
 
     cleaned_word = ''
@@ -65,7 +65,7 @@ def clean_word(word: str) -> str:
     return cleaned_word
 
 def hashtag_finder(tweets: Dict[str, List[tuple]]) -> Dict[str, List[str]]:
-    '''Return a dictionary with the hashtags each username had tweeted, given
+    """Return a dictionary with the hashtags each username had tweeted, given
     a dictionary similar to the on in read_tweets, tweets.
     
     >>> hashtag_finder({'hi': [('#hi #hey #ho #bo', 1, 'lol ok', 0, 5)]})
@@ -73,7 +73,7 @@ def hashtag_finder(tweets: Dict[str, List[tuple]]) -> Dict[str, List[str]]:
     >>> hashtag_finder({'hi': [('#lol', 1, 'ok', 0, 5), ('#ok', 2, 'lol',1, 6)]\
     , 'hey': [('#lmao', 3, 'ikr', 2, 7)]})
     {'hi': ['lol', 'ok'], 'hey': ['lmao']}
-    '''
+    """
     
     new_dict = {}
     for k in tweets:
@@ -112,7 +112,7 @@ def extract_mentions(text: str) -> List[str]:
     return string_list    
 
 def extract_hashtags(text: str) -> List[str]:
-    '''Return a list containing all of the unique hashtags in the text, in the
+    """Return a list containing all of the unique hashtags in the text, in the
     order they appear in the text, converted to lowercase and duplicates not
     included.
 
@@ -124,7 +124,7 @@ def extract_hashtags(text: str) -> List[str]:
     ['many', 'cats', 'meow']
     >>> extract_hashtags('No valid mentions #! here?')
     []
-    '''
+    """
 
     string_list = []
     text = text.split()
@@ -137,7 +137,7 @@ def extract_hashtags(text: str) -> List[str]:
     return string_list
 
 def count_words(text: str, words: Dict[str, int]) -> None:
-    '''Update a dictionary, words, given a text such that it has words in the 
+    """Update a dictionary, words, given a text such that it has words in the 
     text lowercased and cleaned representing keys, and the frequency of the 
     strings represting the values.
 
@@ -146,7 +146,7 @@ def count_words(text: str, words: Dict[str, int]) -> None:
     >>> count_words(h, b)
     >>> b
     {'nick': 8, 'frosst': 1, 'he': 1, 'is': 1, 'so': 2, 'cool': 1}
-    '''
+    """
     
     symbols = [MENTION_SYMBOL, HASH_SYMBOL]
     text = text.split()
@@ -168,7 +168,7 @@ def count_words(text: str, words: Dict[str, int]) -> None:
         del words['']
 
 def common_words(words: Dict[str, int], n: int) -> None:
-    '''Update words, the result of a dictionary similar to the one described
+    """Update words, the result of a dictionary similar to the one described
     in count_words such that it has, at most, n most common words.
     
     >>> b = {'nick': 3, 'fro': 2, 'he': 2, 'is': 2, 'so': 2, 'cool': 1}
@@ -179,7 +179,7 @@ def common_words(words: Dict[str, int], n: int) -> None:
     >>> common_words(b, 4)
     >>> b
     {'nick': 3}
-    '''
+    """
     
     og_lst, remain = [], []
     if len(words) == 0:
@@ -203,10 +203,10 @@ def common_words(words: Dict[str, int], n: int) -> None:
                 del words[k]    
     
 def read_tweets(file: TextIO) -> Dict[str, List[tuple]]:
-    '''Return a dictionary with the keys being lowercase Twitter usernames and
+    """Return a dictionary with the keys being lowercase Twitter usernames and
     the items in the list being tuples representing tweets of each username 
     after reading an opened file, file.
-    '''
+    """
     new_dict = {}
     usernames, user_num = [], []
     line = file.readlines()
@@ -235,7 +235,7 @@ def read_tweets(file: TextIO) -> Dict[str, List[tuple]]:
     return new_dict
 
 def most_popular(tweets: Dict[str, List[tuple]], date1: int, date2: int) -> str:
-    '''Return the username of the Twitter user who was the most popular on
+    """Return the username of the Twitter user who was the most popular on
     Twitter between two dates, date1 and date2, given a dictionary, tweets. In 
     case of a tie in popularity or no tweet was tweeted in the date range,
     return 'tie'.
@@ -246,7 +246,7 @@ def most_popular(tweets: Dict[str, List[tuple]], date1: int, date2: int) -> str:
     >>> t_twt = {'Lol': [('ni', 2, 'br', 6, 6)], 'Mo': [('ad', 3, 'sc', 6, 6)]}
     >>> most_popular(t_twt, 0, 5)
     'tie'
-    '''
+    """
     
     temp_dict = {}
     max_vals, new_vals = [], []
@@ -270,7 +270,7 @@ def most_popular(tweets: Dict[str, List[tuple]], date1: int, date2: int) -> str:
         return new_vals[0]
 
 def detect_author(tweets: Dict[str, List[tuple]], text: str) -> str:
-    '''Return the username (in lowercase), given in tweets,
+    """Return the username (in lowercase), given in tweets,
     if all the hashtags in the tweet, text, are uniquely used by a single user. 
     Otherwise, return the 'unknown'.
     
@@ -280,7 +280,7 @@ def detect_author(tweets: Dict[str, List[tuple]], text: str) -> str:
     >>> detect_author({'bow': [('#hi', 3, 'add', 0, 5), ('#hey', 2, 'dsa', 6, \
     1)], 'pew': [('#don', 5, 'DSi', 0, 5), ('#dog', 3, 'b', 5, 0)]}, '#hey')
     'bow'
-    '''
+    """
     
     user_hash = hashtag_finder(tweets)
     users, temp_len = [], []
